@@ -46,19 +46,27 @@
 		</div>  <!-- category-wrap.// -->
 	</div> <!-- col.// -->
 	<a href="{% url 'store' %}" class="btn btn-outline-primary">Store</a>
-	<div class="col-lg  col-md-6 col-sm-12 col">
-		<form action="#" class="search">
+	<div class="col-lg col-md-6 col-sm-12 col">
+		<form action="{% url 'search' %}" method="GET" class="search">
 			<div class="input-group w-100">
-			    <input type="text" class="form-control" style="width:60%;" placeholder="Search">
-			    
-			    <div class="input-group-append">
-			      <button class="btn btn-primary" type="submit">
-			        <i class="fa fa-search"></i>
-			      </button>
-			    </div>
-		    </div>
-		</form> <!-- search-wrap .end// -->
-	</div> <!-- col.// -->
+				<input
+					type="text"
+					class="form-control"
+					name="keyword"
+					placeholder="Search products..."
+					value="{{ keyword }}"
+					required
+					aria-label="Search products"
+				>
+				<div class="input-group-append">
+					<button class="btn btn-primary" type="submit">
+						<i class="fa fa-search"></i>
+					</button>
+				</div>
+			</div>
+		</form>
+	</div>
+
 	<div class="col-lg-3 col-sm-6 col-8 order-2 order-lg-3">
 				<div class="d-flex justify-content-end mb-3 mb-lg-0">
 					<div class="widget-header">
@@ -70,7 +78,7 @@
 					</div>
 					<a href="{% url 'cart' %}" class="widget-header pl-3 ml-3">
 						<div class="icon icon-sm rounded-circle border"><i class="fa fa-shopping-cart"></i></div>
-						<span class="badge badge-pill badge-danger notify">0</span>
+						<span class="badge badge-pill badge-danger notify">{{ cart_count }}</span>
 					</a>
 				</div> <!-- widgets-wrap.// -->
 			</div> <!-- col.// -->
